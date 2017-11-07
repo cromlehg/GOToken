@@ -48,7 +48,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Minimal insvested limit_    : 0.1 ETH
 
 ### ICO
-* _Hardcap_                    : 1310000 ETH
+* _Hardcap_                    : 700000 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
 * _Start_                      : Sun, 26 Nov 2017 13:00:00 GMT 
@@ -60,9 +60,9 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 _Milestones_
 
-1. 60 days                     : discount 30%
-2. 60 days                     : discount 20%
-3. 60 days                     : discount 10%
-3. 60 days                     : no discount
+1. 30 days                     : discount 30%
+2. 30 days                     : discount 20%
+3. 30 days                     : discount 10%
+3. 30 days                     : no discount
 
 

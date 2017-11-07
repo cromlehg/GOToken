@@ -435,16 +435,14 @@ contract CommonCrowdsale is Ownable, LockableChanges {
 contract GOTokenCrowdsale is CommonCrowdsale {
 
   function GOTokenCrowdsale() public {
-    hardcap = 1310000000000000000000000;
+    hardcap = 700000000000000000000000;
     start = 1511701200;
-    /*end = ;
     wallet = ;
     bountyTokensWallet = ;
     foundersTokensWallet = ;
-    // each stage two month
-    addDiscount(60, 30);
-    addDiscount(60, 20);
-    addDiscount(60, 10);*/
+    addDiscount(30, 30);
+    addDiscount(30, 20);
+    addDiscount(30, 10);
   }
 
 }
