@@ -318,12 +318,12 @@ contract CommonCrowdsale is Ownable, LockableChanges {
 
   uint public foundersTokensPercent = 15;
 
-  struct Discount {
+  struct Milestone {
     uint periodInDays;
     uint discount;
   }
 
-  Discount[] public discounts;
+  Milestone[] public milestones;
 
   GOToken public token = new GOToken();
 
@@ -351,11 +351,6 @@ contract CommonCrowdsale is Ownable, LockableChanges {
     foundersTokensWallet = newFoundersTokensWallet;
   }
 
-  function setEnd(uint newEnd) public onlyOwner notLocked { 
-    require(start < newEnd);
-    end = newEnd;
-  }
-
   function setWallet(address newWallet) public onlyOwner notLocked { 
     wallet = newWallet;
   }
@@ -368,12 +363,21 @@ contract CommonCrowdsale is Ownable, LockableChanges {
     minInvestedLimit = newMinInvestedLimit;
   }
  
-  function discountsCount() public constant returns(uint) {
-    return discounts.length;
+  function milestonesCount() public constant returns(uint) {
+    return milestones.length;
   }
 
-  function addBonus(uint limit, uint bonus) public onlyOwner notLocked {
-    discounts.push(Discount(limit, bonus));
+  function end() public constant returns(uint) {
+    uint last = start;
+    for (uint i = 0; i < milestones.length; i++) {
+      Milestone storage milestone = milestones[i];
+      last += last.periodInDays * 1 days;
+    }
+    return last;
+  }
+
+  function addMilestone(uint periodInDays, uint discount) public onlyOwner notLocked {
+    milestones.push(Milestone(periodInDays, discount));
   }
 
   function finishMinting() public onlyOwner {
@@ -401,23 +405,15 @@ contract CommonCrowdsale is Ownable, LockableChanges {
       if (now < prevTimeLimit)
         return discount.discount;
     }
-    return 0;
+    revert();
   }
 
   function createTokens() public payable {
-    require(msg.value >= minInvestedLimit && now >= start && now < end && invested < hardcap);
+    require(msg.value >= minInvestedLimit && now >= start && now < end() && invested < hardcap);
     wallet.transfer(msg.value);
-
-    // update invested value
     invested = invested.add(msg.value);
-
-    // calculate price with dicount
     uint priceWithDiscount = price.mul(PERCENT_RATE.sub(getDiscount())).div(PERCENT_RATE);      
-
-    // calculate tokens
     uint tokens = msg.value.mul(priceWithDiscount).div(1 ether);
-    
-    // transfer tokens
     token.mint(msg.sender, tokens);
   }
 
@@ -437,6 +433,7 @@ contract GOTokenCrowdsale is CommonCrowdsale {
   function GOTokenCrowdsale() public {
     hardcap = 700000000000000000000000;
     start = 1511701200;
+    end = ;
     wallet = ;
     bountyTokensWallet = ;
     foundersTokensWallet = ;
