@@ -296,7 +296,7 @@ contract CommonCrowdsale is Ownable, LockableChanges {
 
   uint public constant PERCENT_RATE = 100;
 
-  uint public price = 800;
+  uint public price = 800000000000000000000;
 
   uint public minInvestedLimit = 100000000000000000;
 
@@ -430,6 +430,7 @@ contract GOTokenCrowdsale is CommonCrowdsale {
 
   function GOTokenCrowdsale() public {
     hardcap = 700000000000000000000000;
+    price = 800000000000000000000;
     start = 1511701200;
     wallet = address(0);
     bountyTokensWallet = address(0);
