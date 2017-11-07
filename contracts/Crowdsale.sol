@@ -304,8 +304,6 @@ contract CommonCrowdsale is Ownable, LockableChanges {
 
   uint public start = 1511701200;
 
-  uint public end;
-
   uint public invested;
 
   address public wallet;
@@ -371,7 +369,7 @@ contract CommonCrowdsale is Ownable, LockableChanges {
     uint last = start;
     for (uint i = 0; i < milestones.length; i++) {
       Milestone storage milestone = milestones[i];
-      last += last.periodInDays * 1 days;
+      last += milestone.periodInDays * 1 days;
     }
     return last;
   }
@@ -399,11 +397,11 @@ contract CommonCrowdsale is Ownable, LockableChanges {
 
   function getDiscount() public constant returns(uint) {
     uint prevTimeLimit = start;
-    for (uint i = 0; i < discounts.length; i++) {
-      Discount storage discount = discounts[i];
-      prevTimeLimit += discount.periodInDays * 1 days;
+    for (uint i = 0; i < milestones.length; i++) {
+      Milestone storage milestone = milestones[i];
+      prevTimeLimit += milestone.periodInDays * 1 days;
       if (now < prevTimeLimit)
-        return discount.discount;
+        return milestone.discount;
     }
     revert();
   }
@@ -433,13 +431,13 @@ contract GOTokenCrowdsale is CommonCrowdsale {
   function GOTokenCrowdsale() public {
     hardcap = 700000000000000000000000;
     start = 1511701200;
-    end = ;
-    wallet = ;
-    bountyTokensWallet = ;
-    foundersTokensWallet = ;
-    addDiscount(30, 30);
-    addDiscount(30, 20);
-    addDiscount(30, 10);
+    wallet = address(0);
+    bountyTokensWallet = address(0);
+    foundersTokensWallet = address(0);
+    addMilestone(30, 30);
+    addMilestone(30, 20);
+    addMilestone(30, 10);
+    addMilestone(30, 0);
   }
 
 }
