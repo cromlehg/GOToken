@@ -410,8 +410,7 @@ contract CommonCrowdsale is Ownable, LockableChanges {
     require(msg.value >= minInvestedLimit && now >= start && now < end() && invested < hardcap);
     wallet.transfer(msg.value);
     invested = invested.add(msg.value);
-    uint priceWithDiscount = price.mul(PERCENT_RATE.sub(getDiscount())).div(PERCENT_RATE);      
-    uint tokens = msg.value.mul(priceWithDiscount).div(1 ether);
+    uint tokens = msg.value.mul(price.mul(PERCENT_RATE)).div(PERCENT_RATE.sub(getDiscount())).div(1 ether);
     token.mint(msg.sender, tokens);
   }
 
