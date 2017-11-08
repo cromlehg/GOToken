@@ -420,7 +420,7 @@ contract CommonCrowdsale is Ownable, LockableChanges {
 
   function retrieveTokens(address anotherToken) public onlyOwner {
     ERC20 alienToken = ERC20(anotherToken);
-    alienToken.transfer(wallet, token.balanceOf(this));
+    alienToken.transfer(wallet, alienToken.balanceOf(this));
   }
 
 }
