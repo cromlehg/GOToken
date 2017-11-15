@@ -275,22 +275,7 @@ contract GOToken is MintableToken {
 
 }
 
-contract LockableChanges is Ownable {
-    
-  bool public changesLocked;
-  
-  modifier notLocked() {
-    require(!changesLocked);
-    _;
-  }
-  
-  function lockChanges() public onlyOwner {
-    changesLocked = true;
-  }
-    
-}
-
-contract CommonCrowdsale is Ownable, LockableChanges {
+contract CommonCrowdsale is Ownable {
 
   using SafeMath for uint256;
 
@@ -307,6 +292,8 @@ contract CommonCrowdsale is Ownable, LockableChanges {
   uint public invested;
 
   address public wallet;
+
+  address public directMintAgent;
 
   address public bountyTokensWallet;
 
@@ -325,39 +312,53 @@ contract CommonCrowdsale is Ownable, LockableChanges {
 
   GOToken public token = new GOToken();
 
-  function setHardcap(uint newHardcap) public onlyOwner notLocked { 
+  modifier onlyDirectMintAgentOrOwner() {
+    require(directMintAgent == msg.sender || owner == msg.sender);
+    _;
+  }
+
+  modifier saleIsOn() {
+    require(msg.value >= minInvestedLimit && now >= start && now < end() && invested < hardcap);
+    _;
+  }
+
+  function setDirectMintAgent(address newDirectMintAgent) public onlyOwner {
+    directMintAgent = newDirectMintAgent;
+  }
+
+  function setHardcap(uint newHardcap) public onlyOwner { 
     hardcap = newHardcap;
   }
  
-  function setStart(uint newStart) public onlyOwner notLocked { 
+  function setStart(uint newStart) public onlyOwner { 
     start = newStart;
   }
 
-  function setBountyTokensPercent(uint newBountyTokensPercent) public onlyOwner notLocked { 
+  function setBountyTokensPercent(uint newBountyTokensPercent) public onlyOwner { 
     bountyTokensPercent = newBountyTokensPercent;
   }
 
-  function setFoundersTokensPercent(uint newFoundersTokensPercent) public onlyOwner notLocked { 
+  function setFoundersTokensPercent(uint newFoundersTokensPercent) public onlyOwner { 
     foundersTokensPercent = newFoundersTokensPercent;
   }
 
-  function setBountyTokensWallet(address newBountyTokensWallet) public onlyOwner notLocked { 
+  function setBountyTokensWallet(address newBountyTokensWallet) public onlyOwner { 
     bountyTokensWallet = newBountyTokensWallet;
   }
 
-  function setFoundersTokensWallet(address newFoundersTokensWallet) public onlyOwner notLocked { 
+  function setFoundersTokensWallet(address newFoundersTokensWallet) public onlyOwner { 
     foundersTokensWallet = newFoundersTokensWallet;
   }
 
-  function setWallet(address newWallet) public onlyOwner notLocked { 
+  function setWallet(address newWallet) public onlyOwner { 
     wallet = newWallet;
   }
 
-  function setPrice(uint newPrice) public onlyOwner notLocked {
+  function setPrice(uint newPrice) public onlyOwner {
     price = newPrice;
   }
 
-  function setMinInvestedLimit(uint newMinInvestedLimit) public onlyOwner notLocked {
+  function setMinInvestedLimit(uint newMinInvestedLimit) public onlyOwner {
     minInvestedLimit = newMinInvestedLimit;
   }
  
@@ -374,7 +375,7 @@ contract CommonCrowdsale is Ownable, LockableChanges {
     return last;
   }
 
-  function addMilestone(uint periodInDays, uint discount) public onlyOwner notLocked {
+  function addMilestone(uint periodInDays, uint discount) public onlyOwner {
     milestones.push(Milestone(periodInDays, discount));
   }
 
@@ -406,12 +407,20 @@ contract CommonCrowdsale is Ownable, LockableChanges {
     revert();
   }
 
+  function calculateAndTransferTokens(address to, uint investedInWei) internal {
+    uint tokens = investedInWei.mul(price.mul(PERCENT_RATE)).div(PERCENT_RATE.sub(getDiscount())).div(1 ether);
+    token.mint(to, tokens);
+  }
+
+  function directMint(address to, uint investedWei) public onlyDirectMintAgentOrOwner saleIsOn {
+    calculateAndTransferTokens(to, investedWei);
+  }
+
   function createTokens() public payable {
     require(msg.value >= minInvestedLimit && now >= start && now < end() && invested < hardcap);
     wallet.transfer(msg.value);
     invested = invested.add(msg.value);
-    uint tokens = msg.value.mul(price.mul(PERCENT_RATE)).div(PERCENT_RATE.sub(getDiscount())).div(1 ether);
-    token.mint(msg.sender, tokens);
+    calculateAndTransferTokens(msg.sender, msg.value);
   }
 
   function() external payable {
@@ -431,9 +440,9 @@ contract GOTokenCrowdsale is CommonCrowdsale {
     hardcap = 700000000000000000000000;
     price = 800000000000000000000;
     start = 1511701200;
-    wallet = address(0);
-    bountyTokensWallet = address(0);
-    foundersTokensWallet = address(0);
+    wallet = ;
+    bountyTokensWallet = ;
+    foundersTokensWallet = ;
     addMilestone(30, 30);
     addMilestone(30, 20);
     addMilestone(30, 10);
