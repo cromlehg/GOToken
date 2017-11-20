@@ -268,9 +268,22 @@ contract GOToken is MintableToken {
     
   uint32 public constant decimals = 18;
 
+  modifier notLocked() {
+    require(msg.sender == owner || !mintingFinished);
+    _;
+  }
+
   function retrieveTokens(address anotherToken) public onlyOwner {
     ERC20 alienToken = ERC20(anotherToken);
     alienToken.transfer(owner, alienToken.balanceOf(this));
+  }
+
+  function transfer(address _to, uint256 _value) public notLocked returns (bool) {
+    return super.transfer(_to, _value); 
+  }
+
+  function transferFrom(address from, address to, uint256 value) public notLocked returns (bool) {
+    return super.transferFrom(from, to, value); 
   }
 
 }
@@ -408,6 +421,7 @@ contract CommonCrowdsale is Ownable {
   }
 
   function calculateAndTransferTokens(address to, uint investedInWei) internal {
+    invested = invested.add(msg.value);
     uint tokens = investedInWei.mul(price.mul(PERCENT_RATE)).div(PERCENT_RATE.sub(getDiscount())).div(1 ether);
     token.mint(to, tokens);
   }
@@ -419,7 +433,6 @@ contract CommonCrowdsale is Ownable {
   function createTokens() public payable {
     require(msg.value >= minInvestedLimit && now >= start && now < end() && invested < hardcap);
     wallet.transfer(msg.value);
-    invested = invested.add(msg.value);
     calculateAndTransferTokens(msg.sender, msg.value);
   }
 
