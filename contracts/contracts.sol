@@ -269,7 +269,7 @@ contract GOToken is MintableToken {
   uint32 public constant decimals = 18;
 
   modifier notLocked() {
-    require(msg.sender == owner || !mintingFinished);
+    require(msg.sender == owner || mintingFinished);
     _;
   }
 
@@ -330,8 +330,8 @@ contract CommonCrowdsale is Ownable {
     _;
   }
 
-  modifier saleIsOn() {
-    require(msg.value >= minInvestedLimit && now >= start && now < end() && invested < hardcap);
+  modifier saleIsOn(uint value) {
+    require(value >= minInvestedLimit && now >= start && now < end() && invested < hardcap);
     _;
   }
 
@@ -393,7 +393,7 @@ contract CommonCrowdsale is Ownable {
   }
 
   function finishMinting() public onlyOwner {
-    uint extendedTokensPercent = bountyTokensPercent.add(foundersTokensPercent).add(bountyTokensPercent);      
+    uint extendedTokensPercent = bountyTokensPercent.add(foundersTokensPercent);      
     uint totalSupply = token.totalSupply();
     uint extendedTokens = totalSupply.mul(extendedTokensPercent).div(PERCENT_RATE.sub(extendedTokensPercent));
     uint summaryTokens = extendedTokens.add(totalSupply);
@@ -401,7 +401,7 @@ contract CommonCrowdsale is Ownable {
     uint bountyTokens = summaryTokens.mul(bountyTokensPercent).div(PERCENT_RATE);
     token.mint(bountyTokensWallet, bountyTokens);
 
-    uint foundersTokens = summaryTokens.sub(bountyTokens);
+    uint foundersTokens = extendedTokens.sub(bountyTokens);
     token.mint(foundersTokensWallet, foundersTokens);
 
     token.finishMinting();
@@ -426,12 +426,11 @@ contract CommonCrowdsale is Ownable {
     token.mint(to, tokens);
   }
 
-  function directMint(address to, uint investedWei) public onlyDirectMintAgentOrOwner saleIsOn {
+  function directMint(address to, uint investedWei) public onlyDirectMintAgentOrOwner saleIsOn(investedWei) {
     calculateAndTransferTokens(to, investedWei);
   }
 
-  function createTokens() public payable {
-    require(msg.value >= minInvestedLimit && now >= start && now < end() && invested < hardcap);
+  function createTokens() public payable saleIsOn(msg.value) {
     wallet.transfer(msg.value);
     calculateAndTransferTokens(msg.sender, msg.value);
   }
@@ -453,9 +452,9 @@ contract GOTokenCrowdsale is CommonCrowdsale {
     hardcap = 700000000000000000000000;
     price = 800000000000000000000;
     start = 1511701200;
-    wallet = ;
-    bountyTokensWallet = ;
-    foundersTokensWallet = ;
+    wallet = 0xd31ee50ba92dadcdbb7bd21150e11846fd1489fd;
+    bountyTokensWallet = 0xbceb221eb1a31945cb3b10280a96439f5d995388;
+    foundersTokensWallet = 0xecd934e7c5a83f40f494f161109932af96fc5f66;
     addMilestone(30, 30);
     addMilestone(30, 20);
     addMilestone(30, 10);
