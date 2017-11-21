@@ -314,6 +314,8 @@ contract CommonCrowdsale is Ownable {
 
   address public foundersTokensWallet;
 
+  mapping (address => bool) public authozedOverMaxLimit;
+
   uint public bountyTokensPercent = 5;
 
   uint public foundersTokensPercent = 15;
@@ -432,12 +434,16 @@ contract CommonCrowdsale is Ownable {
     token.mint(to, tokens);
   }
 
+  function authorizeMoreThanMaxLimit(address to) public onlyDirectMintAgentOrOwner {
+    authozedOverMaxLimit[to] = true;
+  }  
+
   function directMint(address to, uint investedWei) public onlyDirectMintAgentOrOwner saleIsOn(investedWei) {
     calculateAndTransferTokens(to, investedWei);
   }
 
   function createTokens() public payable saleIsOn(msg.value) {
-    require(msg.value < maxInvestedLimit);
+    require(msg.value < maxInvestedLimit || authozedOverMaxLimit[msg.sender]);
     wallet.transfer(msg.value);
     calculateAndTransferTokens(msg.sender, msg.value);
   }
