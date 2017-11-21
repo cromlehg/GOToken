@@ -298,6 +298,8 @@ contract CommonCrowdsale is Ownable {
 
   uint public minInvestedLimit = 100000000000000000;
 
+  uint public maxInvestedLimit = 25000000000000000000;
+
   uint public hardcap = 1310000000000000000000000;
 
   uint public start = 1511701200;
@@ -371,6 +373,10 @@ contract CommonCrowdsale is Ownable {
     price = newPrice;
   }
 
+  function setMaxInvestedLimit(uint naxMinInvestedLimit) public onlyOwner {
+    maxInvestedLimit = naxMinInvestedLimit;
+  }
+
   function setMinInvestedLimit(uint newMinInvestedLimit) public onlyOwner {
     minInvestedLimit = newMinInvestedLimit;
   }
@@ -431,6 +437,7 @@ contract CommonCrowdsale is Ownable {
   }
 
   function createTokens() public payable saleIsOn(msg.value) {
+    require(msg.value < maxInvestedLimit);
     wallet.transfer(msg.value);
     calculateAndTransferTokens(msg.sender, msg.value);
   }
