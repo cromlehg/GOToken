@@ -403,13 +403,12 @@ contract CommonCrowdsale is Ownable {
   function finishMinting() public onlyOwner {
     uint extendedTokensPercent = bountyTokensPercent.add(foundersTokensPercent);      
     uint totalSupply = token.totalSupply();
-    uint extendedTokens = totalSupply.mul(extendedTokensPercent).div(PERCENT_RATE.sub(extendedTokensPercent));
-    uint summaryTokens = extendedTokens.add(totalSupply);
+    uint allTokens = totalSupply.mul(PERCENT_RATE).div(PERCENT_RATE.sub(extendedTokensPercent));
 
-    uint bountyTokens = summaryTokens.mul(bountyTokensPercent).div(PERCENT_RATE);
+    uint bountyTokens = allTokens.mul(bountyTokensPercent).div(PERCENT_RATE);
     token.mint(bountyTokensWallet, bountyTokens);
 
-    uint foundersTokens = extendedTokens.sub(bountyTokens);
+    uint foundersTokens = allTokens.mul(foundersTokensPercent).div(PERCENT_RATE);
     token.mint(foundersTokensWallet, foundersTokens);
 
     token.finishMinting();
@@ -465,9 +464,9 @@ contract GOTokenCrowdsale is CommonCrowdsale {
     hardcap = 700000000000000000000000;
     price = 800000000000000000000;
     start = 1511701200;
-    wallet = 0xd31ee50ba92dadcdbb7bd21150e11846fd1489fd;
-    bountyTokensWallet = 0xbceb221eb1a31945cb3b10280a96439f5d995388;
-    foundersTokensWallet = 0xecd934e7c5a83f40f494f161109932af96fc5f66;
+    wallet = 0x727436A7E7B836f3AB8d1caF475fAfEaeb25Ff27;
+    bountyTokensWallet = 0x38e4f2A7625A391bFE59D6ac74b26D8556d6361E;
+    foundersTokensWallet = 0x76A13d4F571107f363FF253E80706DAcE889aDED;
     addMilestone(30, 30);
     addMilestone(30, 20);
     addMilestone(30, 10);

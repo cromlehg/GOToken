@@ -177,7 +177,7 @@ contract('Crowdsale', function(wallets) {
       // check total minted
       summaryTokensMinted = summaryTokensMinted.add(extended).round(0)
       let totalSupply = await token.totalSupply()
-      totalSupply.should.be.bignumber.equal(summaryTokensMinted)
+      totalSupply.div(100000).toFixed(0).should.be.bignumber.equal(summaryTokensMinted.div(100000).toFixed(0))
       console.log('Total minted ' + totalSupply)
      
 
