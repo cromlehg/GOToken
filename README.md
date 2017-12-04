@@ -53,10 +53,10 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _ICO_ -
 
 ### ICO
-* _Hardcap_                    : 700000 ETH
+* _Hardcap_                    : 114000 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
-* _Start_                      : Sun, 26 Nov 2017 13:00:00 GMT 
+* _Start_                      : 15 Dec 2017 13:00:00 GMT 
 * _End_                        : 
 * _Founders tokens wallet_     : 
 * _Bounty tokens wallet_       : 
@@ -72,18 +72,18 @@ _Milestones_
 
 ## Kovan network configuration 1
 
-* _Base price_                 : 800 GO per ETH
+* _Base price_                 : 5000 GO per ETH
 * _Minimal insvested limit_    : 0.1 ETH
 
 ### Links
-* _Token_ - https://kovan.etherscan.io/token/0x549fea1b4f71d7db82613157f0ce70b5f39dc86c
-* _ICO_ - https://kovan.etherscan.io/address/0xfab1b4fa20d8f67607b3c1b00fe000027710100b
+* _Token_ - 
+* _ICO_ - 
 
 ### ICO
-* _Hardcap_                    : 700000 ETH
+* _Hardcap_                    : 114000 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
-* _Start_                      : Sun, 26 Nov 2017 13:00:00 GMT 
+* _Start_                      : 
 * _End_                        : 
 * _Founders tokens wallet_     : 0x54a67F1507dEb1BFc58ba3ffa94B59fC50EB74BC
 * _Bounty tokens wallet_       : 0xD1BC33B2c89C93E65b0D476B8b50BFee82594847
@@ -102,7 +102,6 @@ _Milestones_
 #### Investors
 
 ##### ICO
-* _0xb8600b335332724Df5108Fc0595002409c2ADbC6_ - 0.1 ETH invested => 114.285714285714285714 GO tokens, transaction: https://kovan.etherscan.io/tx/0xb4fe3438aa5e1b3e8d7635f216bad1c1816e42192a359a65501e02060bb97035
 
 ##### Service operations
 * ICO finishMinting:

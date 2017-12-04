@@ -268,9 +268,20 @@ contract GOToken is MintableToken {
     
   uint32 public constant decimals = 18;
 
+  mapping(address => bool) public locked;
+
   modifier notLocked() {
-    require(msg.sender == owner || mintingFinished);
+    require(msg.sender == owner || (mintingFinished && !locked[msg.sender]));
     _;
+  }
+
+  function lock(address to) public onlyOwner {
+    require(!mintingFinished);
+    locked[to] = true;
+  }
+  
+  function unlock(address to) public onlyOwner {
+    locked[to] = false;
   }
 
   function retrieveTokens(address anotherToken) public onlyOwner {
@@ -305,6 +316,8 @@ contract CommonCrowdsale is Ownable {
   uint public start = 1511701200;
 
   uint public invested;
+  
+  uint public extraTokensPercent;
 
   address public wallet;
 
@@ -314,11 +327,13 @@ contract CommonCrowdsale is Ownable {
 
   address public foundersTokensWallet;
 
-  mapping (address => bool) public authozedOverMaxLimit;
-
   uint public bountyTokensPercent = 5;
 
   uint public foundersTokensPercent = 15;
+  
+  uint public index;
+  
+  address[] public tokenHolders;
 
   struct Milestone {
     uint periodInDays;
@@ -337,6 +352,10 @@ contract CommonCrowdsale is Ownable {
   modifier saleIsOn(uint value) {
     require(value >= minInvestedLimit && now >= start && now < end() && invested < hardcap);
     _;
+  }
+
+  function tokenHoldersCount() public constant returns(uint) {
+    tokenHolders.length;
   }
 
   function setDirectMintAgent(address newDirectMintAgent) public onlyOwner {
@@ -400,6 +419,24 @@ contract CommonCrowdsale is Ownable {
     milestones.push(Milestone(periodInDays, discount));
   }
 
+  function setExtratokensPercent(uint newExtraTokensPercent) public onlyOwner {
+    extraTokensPercent = newExtraTokensPercent;
+  }
+
+  function payExtraTokens(uint count) public onlyOwner {
+    require(extraTokensPercent > 0);
+    for(uint i = 0; index < tokenHolders.length && i < count; i++) {
+      address tokenHolder = tokenHolders[index];
+      uint value = token.balanceOf(tokenHolder);
+      if(value != 0) {
+        uint targetValue = value.mul(extraTokensPercent).div(PERCENT_RATE);
+        token.mint(this, targetValue);
+        token.transfer(tokenHolder, targetValue);
+      }
+      index++;
+    }
+  }
+
   function finishMinting() public onlyOwner {
     uint extendedTokensPercent = bountyTokensPercent.add(foundersTokensPercent);      
     uint totalSupply = token.totalSupply();
@@ -431,18 +468,14 @@ contract CommonCrowdsale is Ownable {
     invested = invested.add(msg.value);
     uint tokens = investedInWei.mul(price.mul(PERCENT_RATE)).div(PERCENT_RATE.sub(getDiscount())).div(1 ether);
     token.mint(to, tokens);
+    if(investedInWei >= maxInvestedLimit) token.lock(to);
   }
-
-  function authorizeMoreThanMaxLimit(address to) public onlyDirectMintAgentOrOwner {
-    authozedOverMaxLimit[to] = true;
-  }  
 
   function directMint(address to, uint investedWei) public onlyDirectMintAgentOrOwner saleIsOn(investedWei) {
     calculateAndTransferTokens(to, investedWei);
   }
 
   function createTokens() public payable saleIsOn(msg.value) {
-    require(msg.value < maxInvestedLimit || authozedOverMaxLimit[msg.sender]);
     wallet.transfer(msg.value);
     calculateAndTransferTokens(msg.sender, msg.value);
   }
@@ -455,15 +488,19 @@ contract CommonCrowdsale is Ownable {
     ERC20 alienToken = ERC20(anotherToken);
     alienToken.transfer(wallet, alienToken.balanceOf(this));
   }
+  
+  function unlock(address to) public onlyOwner {
+    token.unlock(to);
+  }
 
 }
 
 contract GOTokenCrowdsale is CommonCrowdsale {
 
   function GOTokenCrowdsale() public {
-    hardcap = 700000000000000000000000;
-    price = 800000000000000000000;
-    start = 1511701200;
+    hardcap = 114000000000000000000000;
+    price = 5000000000000000000000;
+    start = 1513342800;
     wallet = 0x727436A7E7B836f3AB8d1caF475fAfEaeb25Ff27;
     bountyTokensWallet = 0x38e4f2A7625A391bFE59D6ac74b26D8556d6361E;
     foundersTokensWallet = 0x76A13d4F571107f363FF253E80706DAcE889aDED;
