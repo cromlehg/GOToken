@@ -44,7 +44,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ## Main network configuration
 
-* _Base price_                 : 800 GO per ETH
+* _Base price_                 : 5000 GO per ETH
 * _Minimal insvested limit_    : 0.1 ETH
 * _Maximum non-verified insvested limit_  : 25 ETH
 
@@ -54,14 +54,14 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ### ICO
 * _Hardcap_                    : 114000 ETH
+* _Invested limit to KYC lock  : 25 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
 * _Start_                      : 15 Dec 2017 13:00:00 GMT 
-* _End_                        : 
-* _Founders tokens wallet_     : 
-* _Bounty tokens wallet_       : 
-* _Contract manager_           : 
-* _ETH Wallets_                : 
+* _Founders tokens wallet_     : 0x76A13d4F571107f363FF253E80706DAcE889aDED
+* _Bounty tokens wallet_       : 0x38e4f2A7625A391bFE59D6ac74b26D8556d6361E
+* _Contract manager_           : 0xC4ecaF5986c88C752bf6E73C1b48b251c2125700
+* _ETH Wallets_                : 0x727436A7E7B836f3AB8d1caF475fAfEaeb25Ff27
 
 _Milestones_
 
@@ -70,36 +70,39 @@ _Milestones_
 3. 30 days                     : discount 10%
 3. 30 days                     : no discount
 
-## Kovan network configuration 1
+## Ropsten network configuration 1
 
 * _Base price_                 : 5000 GO per ETH
 * _Minimal insvested limit_    : 0.1 ETH
 
 ### Links
-* _Token_ - 
-* _ICO_ - 
+* _Token_ - https://ropsten.etherscan.io/token/0x438fad0f5e8cde6145376dfb7bdee699eb07e9c7
+* _ICO_ - https://ropsten.etherscan.io/address/0x003fcf22b4e267493ce5b9cc830a8b19f979167a
 
 ### ICO
 * _Hardcap_                    : 114000 ETH
+* _Invested limit to KYC lock  : 1 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
-* _Start_                      : 
-* _End_                        : 
+* _Start_                      : Tue, 04 Dec 2017 13:00:00 GMT
 * _Founders tokens wallet_     : 0x54a67F1507dEb1BFc58ba3ffa94B59fC50EB74BC
 * _Bounty tokens wallet_       : 0xD1BC33B2c89C93E65b0D476B8b50BFee82594847
-* _Contract manager_           : 0x445c94f566abF8E28739c474c572D356d03Ad999
-* _ETH Wallets_                : 0xE619BCD3c4609AE269B5eBE5bf0cb7D1Dc70C210
+* _Contract manager_           : 0x25803D4325EbC33CCF779FF16a23d6CF9543e559
+* _ETH Wallets_                : 0x6507628aE29E89666cA9df7fabB532480be0Ce79
 
 _Milestones_
 
-1. 30 days                     : discount 30%
-2. 30 days                     : discount 20%
-3. 30 days                     : discount 10%
-3. 30 days                     : no discount
+1. 1 days                     : discount 30%
+2. 1 days                     : discount 20%
+3. 1 days                     : discount 10%
+3. 1 days                     : no discount
 
 ### Test audit
 
 #### Investors
+*  0.1 ether => ~  714 tokens, discount 30%, gas = 128702 : https://ropsten.etherscan.io/tx/0xfc5a3d71b52f46dc6a7f197ad0ccd5227f1b222971194b39473158f846e7db36
+*  1.2 ether => ~ 8571 tokens, discount 30%, gas =  97184 : https://ropsten.etherscan.io/tx/0x95de28d940d1a0da53128f15eda07b0611154c709bb086e45ca8792905133f65
+* 1.08 ether => ~ 7714 tokens, discount 30%, gas =  97184 : https://ropsten.etherscan.io/tx/0x238b4b25a5ca87218354c5f35305705c28d1eec4c013b573cd9f237f0c620319
 
 ##### ICO
 
@@ -107,5 +110,6 @@ _Milestones_
 * ICO finishMinting:
 
 #### Transfer tokens transactions
+* Reject transfer tokens during ICO: https://ropsten.etherscan.io/tx/0x3490bd9779afa19484a4076c9134aca900321bd45109d5c9024cfee0fc2939e2
 
 
