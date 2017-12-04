@@ -54,7 +54,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ### ICO
 * _Hardcap_                    : 114000 ETH
-* _Invested limit to KYC lock  : 25 ETH
+* _Invested limit to KYC lock  : 20 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
 * _Start_                      : 15 Dec 2017 13:00:00 GMT 

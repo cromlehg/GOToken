@@ -305,15 +305,15 @@ contract CommonCrowdsale is Ownable {
 
   uint public constant PERCENT_RATE = 100;
 
-  uint public price = 800000000000000000000;
+  uint public price = 5000000000000000000000;
 
   uint public minInvestedLimit = 100000000000000000;
 
-  uint public maxInvestedLimit = 25000000000000000000;
+  uint public maxInvestedLimit = 20000000000000000000;
 
-  uint public hardcap = 1310000000000000000000000;
+  uint public hardcap = 114000000000000000000000;
 
-  uint public start = 1511701200;
+  uint public start = 1513342800;
 
   uint public invested;
   
