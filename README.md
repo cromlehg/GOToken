@@ -50,10 +50,10 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ### Links
 * _Token_ - 
-* _ICO_ -
+* _ITO_ -
 
-### ICO
-* _Hardcap_                    : 114000 ETH
+### ITO
+* _Hardcap_                    : 114000 ETH
 * _Invested limit to KYC lock  : 20 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
@@ -77,10 +77,10 @@ _Milestones_
 
 ### Links
 * _Token_ - https://ropsten.etherscan.io/token/0x438fad0f5e8cde6145376dfb7bdee699eb07e9c7
-* _ICO_ - https://ropsten.etherscan.io/address/0x003fcf22b4e267493ce5b9cc830a8b19f979167a
+* _ITO_ - https://ropsten.etherscan.io/address/0x003fcf22b4e267493ce5b9cc830a8b19f979167a
 
-### ICO
-* _Hardcap_                    : 114000 ETH
+### ITO
+* _Hardcap_                    : 114000 ETH
 * _Invested limit to KYC lock  : 1 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
@@ -104,7 +104,7 @@ _Milestones_
 *  1.2 ether => ~ 8571 tokens, discount 30%, gas =  97184 : https://ropsten.etherscan.io/tx/0x95de28d940d1a0da53128f15eda07b0611154c709bb086e45ca8792905133f65
 * 1.08 ether => ~ 7714 tokens, discount 30%, gas =  97184 : https://ropsten.etherscan.io/tx/0x238b4b25a5ca87218354c5f35305705c28d1eec4c013b573cd9f237f0c620319
 
-##### ICO
+##### ITO
 
 ##### Service operations
 * ICO finishMinting:
