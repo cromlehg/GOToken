@@ -104,13 +104,14 @@ _Milestones_
 *  1.2 ether => ~ 8571 tokens, discount 30%, gas =  97184 : https://ropsten.etherscan.io/tx/0x95de28d940d1a0da53128f15eda07b0611154c709bb086e45ca8792905133f65
 * 1.08 ether => ~ 7714 tokens, discount 30%, gas =  97184 : https://ropsten.etherscan.io/tx/0x238b4b25a5ca87218354c5f35305705c28d1eec4c013b573cd9f237f0c620319
 * 0.1  ether => ~  625 tokens, discount 20%, gas =  74271 : https://ropsten.etherscan.io/tx/0xc144131b515c5d05ff4cac1c32e9d1d6fbfce79ae4390d89782ecc95edb20d74
+* 0.1  ether => ~  625 tokens, discount 20%, gas =  74271 : https://ropsten.etherscan.io/tx/0xc33e7baadcd95ce565957511b1d77687f674e9d0c8811c304d7eb581a0f406ac
 
 ##### ITO
 
 ##### Service operations
-* ICO finishMinting:
+* ITO finishMinting:
 
 #### Transfer tokens transactions
-* Reject transfer tokens during ICO: https://ropsten.etherscan.io/tx/0x3490bd9779afa19484a4076c9134aca900321bd45109d5c9024cfee0fc2939e2
+* Reject transfer tokens during ITO: https://ropsten.etherscan.io/tx/0x3490bd9779afa19484a4076c9134aca900321bd45109d5c9024cfee0fc2939e2
 
 
