@@ -149,6 +149,7 @@ _Milestones_
 ##### Service operations
 * ITO finishMinting, gas 110559: https://ropsten.etherscan.io/tx/0xbc32351d825918a8334630a4a0b0b975a8d932ba1774522dcd015abbea2e4a2d
 * Unlock address 0x58d68B183eE257fFc8C9EC85F138f0D204eeF303, gas 28727: https://ropsten.etherscan.io/tx/0x49a1a0aaae5509e70dea7056386e695f7a17febad13f392645fa196071b25c87
+* Set extra tokens 50%: https://ropsten.etherscan.io/tx/0xb01c495be2543739dc68d6f47673f6e1f2f07f9121df8c13ce73100a5de611e8
 
 #### Transfer tokens transactions
 * Transfer from locked address rejected, gas limit 200 000: https://ropsten.etherscan.io/tx/0x9ec56ba928e06e129ffe273b0c9d4ca8e812b40bdde0e37b277d3a2977721105
