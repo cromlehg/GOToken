@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.19;
 
 /**
  * @title ERC20Basic
@@ -332,9 +332,13 @@ contract CommonCrowdsale is Ownable {
   uint public foundersTokensPercent = 15;
   
   uint public index;
+ 
+  bool public isITOFinished;
+
+  bool public extraTokensTransferred;
   
   address[] public tokenHolders;
-
+  
   struct Milestone {
     uint periodInDays;
     uint discount;
@@ -355,7 +359,8 @@ contract CommonCrowdsale is Ownable {
   }
 
   function tokenHoldersCount() public constant returns(uint) {
-    tokenHolders.length;
+    uint length = tokenHolders.length;
+    return length;
   }
 
   function setDirectMintAgent(address newDirectMintAgent) public onlyOwner {
@@ -419,12 +424,12 @@ contract CommonCrowdsale is Ownable {
     milestones.push(Milestone(periodInDays, discount));
   }
 
-  function setExtratokensPercent(uint newExtraTokensPercent) public onlyOwner {
+  function setExtraTokensPercent(uint newExtraTokensPercent) public onlyOwner {
     extraTokensPercent = newExtraTokensPercent;
   }
 
   function payExtraTokens(uint count) public onlyOwner {
-    require(extraTokensPercent > 0);
+    require(extraTokensPercent > 0 && isITOFinished && !extraTokensTransferred);
     for(uint i = 0; index < tokenHolders.length && i < count; i++) {
       address tokenHolder = tokenHolders[index];
       uint value = token.balanceOf(tokenHolder);
@@ -435,23 +440,30 @@ contract CommonCrowdsale is Ownable {
       }
       index++;
     }
+    if(index == tokenHolders.length) extraTokensTransferred = true;
   }
 
-  function finishMinting() public onlyOwner {
+  function finishITO() public onlyOwner {
+    require(!isITOFinished);
+      
     uint extendedTokensPercent = bountyTokensPercent.add(foundersTokensPercent);      
     uint totalSupply = token.totalSupply();
     uint allTokens = totalSupply.mul(PERCENT_RATE).div(PERCENT_RATE.sub(extendedTokensPercent));
 
     uint bountyTokens = allTokens.mul(bountyTokensPercent).div(PERCENT_RATE);
-    token.mint(bountyTokensWallet, bountyTokens);
+    mint(bountyTokensWallet, bountyTokens);
 
     uint foundersTokens = allTokens.mul(foundersTokensPercent).div(PERCENT_RATE);
-    token.mint(foundersTokensWallet, foundersTokens);
+    mint(foundersTokensWallet, foundersTokens);
 
+    isITOFinished = true;
+  }
+
+  function tokenOperationsFinished() public onlyOwner {
+    require(extraTokensTransferred);
     token.finishMinting();
     token.transferOwnership(owner);
   }
-
 
   function getDiscount() public constant returns(uint) {
     uint prevTimeLimit = start;
@@ -464,10 +476,15 @@ contract CommonCrowdsale is Ownable {
     revert();
   }
 
+  function mint(address to, uint value) internal {
+    if(token.balanceOf(to) == 0) tokenHolders.push(to);
+    token.mint(to, value);
+  }
+
   function calculateAndTransferTokens(address to, uint investedInWei) internal {
     invested = invested.add(msg.value);
     uint tokens = investedInWei.mul(price.mul(PERCENT_RATE)).div(PERCENT_RATE.sub(getDiscount())).div(1 ether);
-    token.mint(to, tokens);
+    mint(to, tokens);
     if(investedInWei >= maxInvestedLimit) token.lock(to);
   }
 
@@ -476,6 +493,7 @@ contract CommonCrowdsale is Ownable {
   }
 
   function createTokens() public payable saleIsOn(msg.value) {
+    require(!isITOFinished);
     wallet.transfer(msg.value);
     calculateAndTransferTokens(msg.sender, msg.value);
   }
