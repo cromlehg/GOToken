@@ -103,6 +103,7 @@ _Milestones_
 *  0.1 ether => ~  714 tokens, discount 30%, gas = 128702 : https://ropsten.etherscan.io/tx/0xfc5a3d71b52f46dc6a7f197ad0ccd5227f1b222971194b39473158f846e7db36
 *  1.2 ether => ~ 8571 tokens, discount 30%, gas =  97184 : https://ropsten.etherscan.io/tx/0x95de28d940d1a0da53128f15eda07b0611154c709bb086e45ca8792905133f65
 * 1.08 ether => ~ 7714 tokens, discount 30%, gas =  97184 : https://ropsten.etherscan.io/tx/0x238b4b25a5ca87218354c5f35305705c28d1eec4c013b573cd9f237f0c620319
+* 0.1  ether => ~  625 tokens, discount 20%, gas =  74271 : https://ropsten.etherscan.io/tx/0xc144131b515c5d05ff4cac1c32e9d1d6fbfce79ae4390d89782ecc95edb20d74
 
 ##### ITO
 
