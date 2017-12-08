@@ -522,10 +522,9 @@ contract GOTokenCrowdsale is CommonCrowdsale {
     wallet = 0x727436A7E7B836f3AB8d1caF475fAfEaeb25Ff27;
     bountyTokensWallet = 0x38e4f2A7625A391bFE59D6ac74b26D8556d6361E;
     foundersTokensWallet = 0x76A13d4F571107f363FF253E80706DAcE889aDED;
-    addMilestone(30, 30);
-    addMilestone(30, 20);
-    addMilestone(30, 10);
-    addMilestone(30, 0);
+    addMilestone(7, 30);
+    addMilestone(21, 15);
+    addMilestone(56, 0);
   }
 
 }
