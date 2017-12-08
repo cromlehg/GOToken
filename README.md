@@ -65,10 +65,9 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 _Milestones_
 
-1. 30 days                     : discount 30%
-2. 30 days                     : discount 20%
-3. 30 days                     : discount 10%
-3. 30 days                     : no discount
+1. 7 days                     : discount 30%
+2. 21 days                     : discount 15%
+3. 56 days                     : discount 0%
 
 ## Ropsten network configuration 1 (old code, lock/unclock actually test)
 
