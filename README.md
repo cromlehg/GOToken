@@ -46,7 +46,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 * _Base price_                 : 5000 GO per ETH
 * _Minimal insvested limit_    : 0.1 ETH
-* _Maximum non-verified insvested limit_  : 25 ETH
+* _Maximum non-verified insvested limit_  : 20 ETH
 
 ### Links
 * _Token_ - 
