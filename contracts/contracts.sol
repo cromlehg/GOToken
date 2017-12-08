@@ -429,18 +429,22 @@ contract CommonCrowdsale is Ownable {
   }
 
   function payExtraTokens(uint count) public onlyOwner {
-    require(extraTokensPercent > 0 && isITOFinished && !extraTokensTransferred);
-    for(uint i = 0; index < tokenHolders.length && i < count; i++) {
-      address tokenHolder = tokenHolders[index];
-      uint value = token.balanceOf(tokenHolder);
-      if(value != 0) {
-        uint targetValue = value.mul(extraTokensPercent).div(PERCENT_RATE);
-        token.mint(this, targetValue);
-        token.transfer(tokenHolder, targetValue);
+    require(isITOFinished && !extraTokensTransferred);
+    if(extraTokensPercent == 0) {
+      extraTokensTransferred = true;
+    } else {
+      for(uint i = 0; index < tokenHolders.length && i < count; i++) {
+        address tokenHolder = tokenHolders[index];
+        uint value = token.balanceOf(tokenHolder);
+        if(value != 0) {
+          uint targetValue = value.mul(extraTokensPercent).div(PERCENT_RATE);
+          token.mint(this, targetValue);
+          token.transfer(tokenHolder, targetValue);
+        }
+        index++;
       }
-      index++;
+      if(index == tokenHolders.length) extraTokensTransferred = true;
     }
-    if(index == tokenHolders.length) extraTokensTransferred = true;
   }
 
   function finishITO() public onlyOwner {
