@@ -83,7 +83,7 @@ _Milestones_
 
 ### ITO
 * _Hardcap_                    : 114000 ETH
-* _Purchased limit to KYC lock  : 1 ETH
+* _Purchased limit to KYC lock_  : 1 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
 * _Start_                      : 06 Dec 2017 13:00:00 GMT
