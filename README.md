@@ -32,8 +32,8 @@ After crowdsale contract manager must call:
 2. Process mint extended tokens (setExtendedPercent, payExtraTokens)
 3. Finish token operations
 
-### How to invest
-To purchase tokens investor should send ETH (more than minimum 0.1 ETH) to corresponding crowdsale contract.
+### How to purchase
+To purchase tokens purchaser should send ETH (more than minimum 0.1 ETH) to corresponding crowdsale contract.
 Recommended GAS: 200000, GAS PRICE - 60 Gwei.
 
 ### Wallets with ERC20 support
@@ -43,7 +43,7 @@ Recommended GAS: 200000, GAS PRICE - 60 Gwei.
 
 EXODUS not support ERC20, but have way to export key into MyEtherWallet - http://support.exodus.io/article/128-how-do-i-receive-unsupported-erc20-tokens
 
-Investor must not use other wallets, coinmarkets or stocks. Can lose money.
+Purchaser must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ## Main network configuration
 
@@ -57,7 +57,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ### ITO
 * _Hardcap_                    : 114000 ETH
-* _Invested limit to KYC lock_ : 20 ETH
+* _Purchased limit to KYC lock_ : 20 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
 * _Start_                      : 15 Dec 2017 13:00:00 GMT 
@@ -83,7 +83,7 @@ _Milestones_
 
 ### ITO
 * _Hardcap_                    : 114000 ETH
-* _Invested limit to KYC lock  : 1 ETH
+* _Purchased limit to KYC lock  : 1 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
 * _Start_                      : 06 Dec 2017 13:00:00 GMT
@@ -98,7 +98,7 @@ _Milestones_
 
 ### Test audit
 
-#### Investors
+#### Purchasers
 *  0.1 ether => ~  500 tokens, discount 0%, gas = 101344 : https://ropsten.etherscan.io/tx/0xbe89dcd6cc16916eb4b76f3ba89440604ad4bf4a21406316cb6817dba3bc6591
 *  1.1 ether => ~ 5500 tokens, discount 0%, gas =  94826 : https://ropsten.etherscan.io/tx/0xe45172046b797c6165bec6b93d7e554ea809ff6df87cc54720c022ae48866a5a
 
@@ -123,7 +123,7 @@ _Milestones_
 
 ### ITO
 * _Hardcap_                    : 114000 ETH
-* _Invested limit to KYC lock_ : 1 ETH
+* _Purchased limit to KYC lock_ : 1 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
 * _Start_                      : Tue, 04 Dec 2017 13:00:00 GMT
@@ -141,7 +141,7 @@ _Milestones_
 
 ### Test audit
 
-#### Investors
+#### Purchasers
 *  0.1 ether => ~  714 tokens, discount 30%, gas = 128702 : https://ropsten.etherscan.io/tx/0xfc5a3d71b52f46dc6a7f197ad0ccd5227f1b222971194b39473158f846e7db36
 *  1.2 ether => ~ 8571 tokens, discount 30%, gas =  97184 : https://ropsten.etherscan.io/tx/0x95de28d940d1a0da53128f15eda07b0611154c709bb086e45ca8792905133f65
 * 1.08 ether => ~ 7714 tokens, discount 30%, gas =  97184 : https://ropsten.etherscan.io/tx/0x238b4b25a5ca87218354c5f35305705c28d1eec4c013b573cd9f237f0c620319
@@ -165,7 +165,7 @@ _Milestones_
 
 ### ITO
 * _Hardcap_                    : 114000 ETH
-* _Invested limit to KYC lock_ : 1 ETH
+* _Purchased limit to KYC lock_ : 1 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
 * _Start_                      : 06 Dec 2017 13:00:00 GMT
@@ -180,7 +180,7 @@ _Milestones_
 
 ### Test audit
 
-#### Investors
+#### Purchasers
 *  0.1 ether => ~  500 tokens, discount 0%, gas = 101344 : https://ropsten.etherscan.io/tx/0xbe89dcd6cc16916eb4b76f3ba89440604ad4bf4a21406316cb6817dba3bc6591
 *  1.1 ether => ~ 5500 tokens, discount 0%, gas =  94826 : https://ropsten.etherscan.io/tx/0xe45172046b797c6165bec6b93d7e554ea809ff6df87cc54720c022ae48866a5a
 
@@ -205,7 +205,7 @@ _Milestones_
 
 ### ITO
 * _Hardcap_                    : 114000 ETH
-* _Invested limit to KYC lock_ : 1 ETH
+* _Purchased limit to KYC lock_ : 1 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
 * _Start_                      : 06 Dec 2017 13:00:00 GMT
@@ -220,7 +220,7 @@ _Milestones_
 
 ### Test audit
 
-#### Investors 
+#### Purchasers
 * 0.2 ETH, 145104 gas, 1000 GO - https://ropsten.etherscan.io/tx/0x2bdf66a2c6fd2edda9459b53c773bb27eaa48b09079a1960872c28afc43590f3
 * 0.1 ETH, 100281 gas,  500 GO - https://ropsten.etherscan.io/tx/0x4d10a9378c33a5b3340ea4231d0d985dad26c95cdd3d1aba7c09b02c9851e29b
 * 0.1 ETH, 100281 gas,  500 GO - https://ropsten.etherscan.io/tx/0x1676928bf428682895f7162b82434b18628bc132c7e5dad904e47b447eb96540
@@ -242,4 +242,5 @@ _Milestones_
 
 #### Transfer tokens transactions
 * 53239 gas, https://ropsten.etherscan.io/tx/0xcb5b55b3d421f48108bb3304436c497153826655a688c08fef13a791c8b439aa
+
 
