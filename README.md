@@ -27,7 +27,10 @@ To start working with contract you should follow next steps:
 1. Compile it in Remix with enamble optimization flag and compiler 0.4.18
 2. Deploy bytecode with MyEtherWallet. 
 
-After crowdsale contract manager must call finishMinting. 
+After crowdsale contract manager must call:
+1. finishITO 
+2. Process mint extended tokens (setExtendedPercent, payExtraTokens)
+3. Finish token operations
 
 ### How to invest
 To purchase tokens investor should send ETH (more than minimum 0.1 ETH) to corresponding crowdsale contract.
@@ -235,7 +238,7 @@ _Milestones_
 * pay extra tokens 3 (3 token holders, actually 1), 257574 gas - https://ropsten.etherscan.io/tx/0x23f78c7b407b23cf0af289f2bcd0f88f21a3852cd6a7c72b3594496925f8e7f1
 * Reject pay extra tokens (already payed to all) - https://ropsten.etherscan.io/tx/0x9a1a1293d03861cc312415e951a26e36af034c058af3b623992ccdd5e79512e3
 * Reject finish ITO (already finished and extra tokens payed) - https://ropsten.etherscan.io/tx/0x76640fdb0e42d2ba938711b3ea29598330c2a9d7a410a7ed3e0377c98ba396f2
-* Finish oken operations, 41535 gas - https://ropsten.etherscan.io/tx/0x61a46fff40020fee9e4f87be749bd1f18cdfd4800a5a3a5ad3fb638b71a4bbff
+* Finish token operations, 41535 gas - https://ropsten.etherscan.io/tx/0x61a46fff40020fee9e4f87be749bd1f18cdfd4800a5a3a5ad3fb638b71a4bbff
 
 #### Transfer tokens transactions
 * 53239 gas, https://ropsten.etherscan.io/tx/0xcb5b55b3d421f48108bb3304436c497153826655a688c08fef13a791c8b439aa
