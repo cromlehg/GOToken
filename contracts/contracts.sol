@@ -356,7 +356,7 @@ contract CommonCrowdsale is Ownable {
     _;
   }
 
-  function tokenHoldersCount() public constant returns(uint) {
+  function tokenHoldersCount() public view returns(uint) {
     return tokenHolders.length;
   }
 
@@ -404,7 +404,7 @@ contract CommonCrowdsale is Ownable {
     minInvestedLimit = newMinInvestedLimit;
   }
  
-  function milestonesCount() public constant returns(uint) {
+  function milestonesCount() public view returns(uint) {
     return milestones.length;
   }
 
@@ -466,7 +466,7 @@ contract CommonCrowdsale is Ownable {
     token.transferOwnership(owner);
   }
 
-  function getDiscount() public constant returns(uint) {
+  function getDiscount() public view returns(uint) {
     uint prevTimeLimit = start;
     for (uint i = 0; i < milestones.length; i++) {
       Milestone storage milestone = milestones[i];
@@ -474,6 +474,8 @@ contract CommonCrowdsale is Ownable {
       if (now < prevTimeLimit)
         return milestone.discount;
     }
+    if(true)
+        throw;
     revert();
   }
 
