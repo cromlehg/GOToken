@@ -335,6 +335,8 @@ contract CommonCrowdsale is Ownable {
   
   address[] public tokenHolders;
   
+  mapping (address => uint) public balances;
+  
   struct Milestone {
     uint periodInDays;
     uint discount;
@@ -355,8 +357,7 @@ contract CommonCrowdsale is Ownable {
   }
 
   function tokenHoldersCount() public constant returns(uint) {
-    uint length = tokenHolders.length;
-    return length;
+    return tokenHolders.length;
   }
 
   function setDirectMintAgent(address newDirectMintAgent) public onlyOwner {
@@ -485,7 +486,8 @@ contract CommonCrowdsale is Ownable {
     invested = invested.add(msg.value);
     uint tokens = investedInWei.mul(price.mul(PERCENT_RATE)).div(PERCENT_RATE.sub(getDiscount())).div(1 ether);
     mint(to, tokens);
-    if(investedInWei >= maxInvestedLimit) token.lock(to);
+    balances[to] = balances[to].add(investedInWei);
+    if(balances[to] >= maxInvestedLimit) token.lock(to);
   }
 
   function directMint(address to, uint investedWei) public onlyDirectMintAgentOrOwner saleIsOn(investedWei) {
