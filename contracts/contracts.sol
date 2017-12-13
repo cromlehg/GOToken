@@ -474,8 +474,6 @@ contract CommonCrowdsale is Ownable {
       if (now < prevTimeLimit)
         return milestone.discount;
     }
-    if(true)
-        throw;
     revert();
   }
 
