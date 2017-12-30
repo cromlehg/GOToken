@@ -52,8 +52,8 @@ Purchaser must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Maximum non-verified insvested limit_  : 20 ETH
 
 ### Links
-* _Token_ - 
-* _ITO_ -
+* _Token_ - https://etherscan.io/token/0x849de371420b4e1002418b93d7dca95472ba04b6
+* _ITO_ - https://etherscan.io/address/0x90374ebf6a15e4fdf99d00e9e783cb6183b44272
 
 ### ITO
 * _Hardcap_                    : 114000 ETH
