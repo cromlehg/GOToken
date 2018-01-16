@@ -34,7 +34,7 @@ After crowdsale contract manager must call:
 
 ### How to purchase
 To purchase tokens purchaser should send ETH (more than minimum 0.1 ETH) to corresponding crowdsale contract.
-Recommended GAS: 200000, GAS PRICE - 60 Gwei.
+Recommended GAS: 250000, GAS PRICE - 40 Gwei.
 
 ### Wallets with ERC20 support
 1. MyEtherWallet - https://www.myetherwallet.com/
@@ -60,7 +60,7 @@ Purchaser must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Purchased limit to KYC lock_ : 20 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
-* _Start_                      : 15 Dec 2017 13:00:00 GMT 
+* _Start_                      : 26 jan 2018 13:00:00 GMT 
 * _Founders tokens wallet_     : 0x76A13d4F571107f363FF253E80706DAcE889aDED
 * _Bounty tokens wallet_       : 0x38e4f2A7625A391bFE59D6ac74b26D8556d6361E
 * _Contract manager_           : 0xC4ecaF5986c88C752bf6E73C1b48b251c2125700
