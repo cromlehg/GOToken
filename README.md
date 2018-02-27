@@ -47,20 +47,19 @@ Purchaser must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ## Main network configuration
 
-* _Base price_                 : 5000 GO per ETH
-* _Minimal insvested limit_    : 0.1 ETH
-* _Maximum non-verified insvested limit_  : 20 ETH
+* _Base price_                 : 50000 GO per ETH
+* _Minimal insvested limit_    : 1 ETH
+* _Maximum non-locked tokens purchase limit_  : 10 ETH
 
 ### Links
 * _Token_ - https://etherscan.io/token/0x849de371420b4e1002418b93d7dca95472ba04b6
 * _ITO_ - https://etherscan.io/address/0x90374ebf6a15e4fdf99d00e9e783cb6183b44272
 
 ### ITO
-* _Hardcap_                    : 114000 ETH
-* _Purchased limit to KYC lock_ : 20 ETH
+* _Hardcap_                    : 54000 ETH
 * _Bounty_                     : 5% of total tokens
 * _Founders_                   : 15% of total tokens
-* _Start_                      : 26 jan 2018 13:00:00 GMT 
+* _Start_                      : 06.03.2018 13:00:00 GMT 
 * _Founders tokens wallet_     : 0x76A13d4F571107f363FF253E80706DAcE889aDED
 * _Bounty tokens wallet_       : 0x38e4f2A7625A391bFE59D6ac74b26D8556d6361E
 * _Contract manager_           : 0xC4ecaF5986c88C752bf6E73C1b48b251c2125700
