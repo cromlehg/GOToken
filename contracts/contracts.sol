@@ -258,7 +258,7 @@ contract MintableToken is StandardToken, Ownable {
 
 contract GOToken is MintableToken {	
     
-  string public constant name = "GO Token";
+  string public constant name = "2GO Token";
    
   string public constant symbol = "2GO";
     
@@ -527,7 +527,6 @@ contract GOTokenCrowdsale is CommonCrowdsale {
     addMilestone(7, 30);
     addMilestone(21, 15);
     addMilestone(56, 0);
-    transferOwnership(0xC4ecaF5986c88C752bf6E73C1b48b251c2125700);
   }
 
 }
