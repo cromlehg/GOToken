@@ -260,7 +260,7 @@ contract GOToken is MintableToken {
     
   string public constant name = "GO Token";
    
-  string public constant symbol = "GO";
+  string public constant symbol = "2GO";
     
   uint32 public constant decimals = 18;
 
@@ -518,15 +518,16 @@ contract CommonCrowdsale is Ownable {
 contract GOTokenCrowdsale is CommonCrowdsale {
 
   function GOTokenCrowdsale() public {
-    hardcap = 114000000000000000000000;
-    price = 5000000000000000000000;
-    start = 1513342800;
+    hardcap = 54000000000000000000000;
+    price = 50000000000000000000000;
+    start = 1530230400;
     wallet = 0x727436A7E7B836f3AB8d1caF475fAfEaeb25Ff27;
     bountyTokensWallet = 0x38e4f2A7625A391bFE59D6ac74b26D8556d6361E;
     foundersTokensWallet = 0x76A13d4F571107f363FF253E80706DAcE889aDED;
     addMilestone(7, 30);
     addMilestone(21, 15);
     addMilestone(56, 0);
+    transferOwnership(0xC4ecaF5986c88C752bf6E73C1b48b251c2125700);
   }
 
 }
