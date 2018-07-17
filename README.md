@@ -5,8 +5,8 @@
 
 
 * _Standart_        : ERC20
-* _Name_            : GO Token
-* _Ticket_          : GO
+* _Name_            : 2GO Token
+* _Ticket_          : 2GO
 * _Decimals_        : 18
 * _Emission_        : Mintable
 * _Crowdsales_      : 1
@@ -47,13 +47,13 @@ Purchaser must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ## Main network configuration
 
-* _Base price_                 : 50000 GO per ETH
+* _Base price_                 : 50000 2GO per ETH
 * _Minimal insvested limit_    : 1 ETH
 * _Maximum non-locked tokens purchase limit_  : 10 ETH
 
 ### Links
-* _Token_ - https://etherscan.io/token/0x849de371420b4e1002418b93d7dca95472ba04b6
-* _ITO_ - https://etherscan.io/address/0x90374ebf6a15e4fdf99d00e9e783cb6183b44272
+* _Token_ - 
+* _ITO_ - 
 
 ### ITO
 * _Hardcap_                    : 54000 ETH
@@ -73,7 +73,7 @@ _Milestones_
 
 ## Ropsten network configuration 1 (old code, lock/unclock actually test)
 
-* _Base price_                 : 5000 GO per ETH
+* _Base price_                 : 5000 2GO per ETH
 * _Minimal insvested limit_    : 0.1 ETH
 
 ### Links
