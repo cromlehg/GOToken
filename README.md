@@ -52,8 +52,8 @@ Purchaser must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Maximum non-locked tokens purchase limit_  : 10 ETH
 
 ### Links
-* _Token_ - 
-* _ITO_ - 
+* _Token_ - https://etherscan.io/token/0x00603fd28964766e9351c0827e2938cf4fb20d8d
+* _ITO_ - https://etherscan.io/address/0x05A40435E4e6ecDAbD630BA8593D50B6B6CE14f9
 
 ### ITO
 * _Hardcap_                    : 54000 ETH
